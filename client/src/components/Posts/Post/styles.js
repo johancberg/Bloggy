@@ -39,10 +39,10 @@ export default makeStyles({
   details: {
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '20px',
+    margin: '20px 20px 0px',
   },
   title: {
-    padding: '0 16px',
+    padding: '0',
   },
   cardActions: {
     padding: '0 16px 8px 16px',
