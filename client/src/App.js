@@ -18,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+  }, [currentId, dispatch]);
 
   return (
     <Container maxwidth="lg">
