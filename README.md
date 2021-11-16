@@ -4,7 +4,7 @@ This app i created after a MERN tutorial on Youtube (https://www.youtube.com/wat
 
 ## Homepage
 
-You can find my
+You can find my app on the following homepage https://bl0ggy.netlify.app/.
 
 ### Languages
 
