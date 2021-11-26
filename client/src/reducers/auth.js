@@ -1,6 +1,6 @@
 import { AUTH, LOGOUT } from '../constants/actionTypes';
 
-const authReducer = (state = { authData: null }, action) => {
+export const auth = (state = { authData: null }, action) => {
     switch (action.type) {
         case AUTH:
             console.log(action?.data);
@@ -8,10 +8,9 @@ const authReducer = (state = { authData: null }, action) => {
             return { ...state, authData: action?.data };
         case LOGOUT:
             console.log(action?.data);
-            return state;
+            localStorage.removeItem('profile');
+            return { ...state, authData: null };
         default:
             return state;
     }
 }
-
-export default authReducer;
