@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Avatar, Button, Paper, Grid, Typography, Container,} from '@material-ui/core';
 import { GoogleLogin } from 'react-google-login'
 import { LockOutlinedIcon } from '@material-ui/icons/LockOutlined'
+import { useDispatch } from 'react-redux'
+
 import useStyles from './styles';
 import Input from './Input';
 import Icon from './Icon';
@@ -10,6 +12,7 @@ const Auth = () => {
     const classes= useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsIsgnup] = useState(false);
+    const dispatch = useDispatch();
 
     const handleShowPassword = () => {
         setShowPassword((prev) => !prev);
@@ -28,11 +31,19 @@ const Auth = () => {
         handleShowPassword(false);
     }
 
-    const googleSuccess = (response) => {
-        console.log(response)
+    const googleSuccess = async (response) => {
+        const result = response?.profileObj; // Cannot get property profileObj of undefined
+        const token = response?.tokenId;
+        
+        try {
+            dispatch({ type: 'AUTH', data: { result, token }});
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-    const googleFailure = () => {
+    const googleFailure = (error) => {
+        console.log(error);
         console.log("Google Sign In was unsuccessfull. Try again later.")
     }
 
@@ -60,7 +71,7 @@ const Auth = () => {
                         { isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
                     <GoogleLogin
-                        clientId="GOOGLE ID"
+                        clientId="875273323126-6hpj1a1hnki3j91mi9o75navvjkpo6ok.apps.googleusercontent.com"
                         render={(renderProps) => (<Button className={classes.googleButton} color='primary' fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">Google Sign In</Button>)}
                         onSuccess={googleSuccess}
                         onFailure={googleFailure}
