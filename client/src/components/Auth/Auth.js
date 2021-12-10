@@ -4,6 +4,7 @@ import { GoogleLogin } from 'react-google-login'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 
+import { AUTH } from '../../constants/actionTypes'
 import { signin, signup } from '../../actions/auth';
 import useStyles from './styles';
 import Input from './Input';
@@ -48,7 +49,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
         const token = response?.tokenId;
         
         try {
-            dispatch({ type: 'AUTH', data: { result, token }});
+            dispatch({ type: AUTH, data: { result, token }});
             navigate('/');
         } catch (error) {
             console.log(error);

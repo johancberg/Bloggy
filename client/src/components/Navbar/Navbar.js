@@ -4,19 +4,20 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
 
+import { LOGOUT } from '../../constants/actionTypes';
 import useStyles from './styles';
 import memories from '../../images/memories.png';
 
 
 const Navbar = () => {
-  const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const classes = useStyles();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   
   const logout = useCallback(() => {
-    dispatch({ type: 'LOGOUT'});
+    dispatch({ type: LOGOUT});
     navigate('/');
     setUser(null);
   }, [dispatch, navigate])
