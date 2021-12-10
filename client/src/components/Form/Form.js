@@ -26,7 +26,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
         if (currentId) {
             dispatch(updatePost(currentId, { ...postData, name: user?.result?.name}));
-        } else if (!postData.creator || !postData.title || !postData.selectedFile) {
+        } else if (!postData.title || !postData.selectedFile) {
             alert('Fill in Creator, Title and File');
             return;
         } else {
