@@ -15,7 +15,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
 
     const classes= useStyles();
     const [showPassword, setShowPassword] = useState(false);
-    const [isSignup, setIsIsgnup] = useState(false);
+    const [isSignup, setIsSignup] = useState(false);
     const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -40,8 +40,8 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
     }
 
     const switchMode = () => {
-        setIsIsgnup((prev) => !prev);
-        handleShowPassword(false);
+        setIsSignup((prev) => !prev);
+        setShowPassword(false);
     }
 
     const googleSuccess = async (response) => {
