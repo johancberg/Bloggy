@@ -5,7 +5,7 @@ import { getPosts } from '../../actions/posts'
 
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
-import Paginate from '../Paginate';
+import Paginate from '../Pagination';
 
 const Home = () => {
   const [currentId, setCurrentId] = useState(null);
