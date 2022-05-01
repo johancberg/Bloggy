@@ -6,7 +6,7 @@ export const getPost = (id) => async (dispatch) => {
     try {
         dispatch({ type: START_LOADING });
         const { data } = await api.fetchPost(id);
-        const action = { type: FETCH_POST, payload: data }
+        const action = { type: FETCH_POST, payload: { post: data } }
         dispatch(action);
         dispatch({ type: END_LOADING });
     } catch (error) {
@@ -17,8 +17,8 @@ export const getPost = (id) => async (dispatch) => {
 export const getPosts = (page) => async (dispatch) => {
     try {
         dispatch({ type: START_LOADING });
-        const { data } = await api.fetchPosts(page);
-        const action = { type: FETCH_ALL, payload: data }
+        const { data: { data, currentPage, numberOfPages } } = await api.fetchPosts(page);
+        const action = { type: FETCH_ALL, payload: { data, currentPage, numberOfPages } };
         dispatch(action);
         dispatch({ type: END_LOADING });
     } catch (error) {
@@ -29,7 +29,6 @@ export const getPosts = (page) => async (dispatch) => {
 export const getPostsBySearch = (searchQuery) => async (dispatch) => {
     try {
         const { data : { data } } = await api.fetchPostsBySearch(searchQuery);
-        console.log(data);
         const action = { type: FETCH_BY_SEARCH, payload: data }
         dispatch(action);
     } catch (error) {
