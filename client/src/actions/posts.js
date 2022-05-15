@@ -32,7 +32,7 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
         const action = { type: FETCH_BY_SEARCH, payload: data }
         dispatch(action);
     } catch (error) {
-        console.log(error);
+        console.log(error.response);
     }
 }
 

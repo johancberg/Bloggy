@@ -13,7 +13,7 @@ API.interceptors.request.use((req) => {
 
 export const fetchPost = (id) => API.get(`${postURL}/${id}`);
 export const fetchPosts = (page) => API.get(`${postURL}?page=${page}`);
-export const fetchPostsBySearch = (searchQuery) => API.get(`${postURL}/search?searchQuery=${searchQuery.search || 'none' }&tags=${searchQuery.tags}`);
+export const fetchPostsBySearch = (searchQuery) => API.get(`${postURL}/search?searchQuery=${searchQuery?.search || 'none' }&tags=${searchQuery?.tags}`);
 export const createPost = (newPost) => API.post(postURL, newPost);
 export const likePost = (id) => API.patch(`${postURL}/${id}/likePost`);
 export const updatePost = (id, updatedPost) => API.patch(`${postURL}/${id}`, updatedPost);
