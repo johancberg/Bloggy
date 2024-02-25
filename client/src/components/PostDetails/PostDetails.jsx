@@ -3,7 +3,7 @@ import { Paper, Typography, CircularProgress, Divider } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getPost, getPostsBySearch } from '../../actions/posts';
+import { getPost } from '../../actions/posts';
 
 import useStyles from './styles';
 
@@ -17,12 +17,6 @@ const PostDetails = () => {
     useEffect(() => {
         dispatch(getPost(id));
     }, [id, dispatch]);
-
-    useEffect(() => {
-        if (post) {
-            dispatch(getPostsBySearch({ tags: post?.tags.join(',') }));
-        }
-    }, [post, dispatch]);
 
     if (!post) return null;
 
