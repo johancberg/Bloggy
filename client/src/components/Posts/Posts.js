@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, CircularProgress } from '@material-ui/core';
+import { Grid, CircularProgress, Typography } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import Post from './Post/Post';
 import useStyles from './styles';
@@ -12,6 +12,14 @@ const Posts = ({ setCurrentId }) => {
     if (!posts.length && !isLoading) return 'No posts';
 
     return (
+    <Typography>
+        Notice!
+        This app i currently deprecated because the server-side is executed through Heroku, which does not work with a free tier any longer. The server-side rendering is planned to be moved,
+        and the source code can be found <a href="https://github.com/johancberg/Bloggy">here</a>.
+    </Typography>
+    )
+    /*
+    return (
         isLoading ? <CircularProgress /> : (
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>
                 {posts.map((post) => (
@@ -22,6 +30,7 @@ const Posts = ({ setCurrentId }) => {
             </Grid>
         )
     )
+    */
 }
 
 export default Posts;
