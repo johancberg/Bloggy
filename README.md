@@ -17,4 +17,4 @@ The following languages has been used for this project.
 
 ### Support
 
-The backend is currently being run by Heroku while the frontend is being deployed by Netlify.
+The backend is currently being run by Render while the frontend is being deployed by Netlify.
