@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Avatar, Button, Paper, Grid, Typography, Container,} from '@material-ui/core';
-import { GoogleLogin } from 'react-google-login'
+import { Avatar, Button, Paper, Grid, Typography, Container,} from '@mui/material';
+//import { GoogleLogin } from 'react-google-login'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 
@@ -84,13 +84,16 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         { isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
-                    <GoogleLogin
+
+                    {/* <GoogleLogin
                         clientId="875273323126-6hpj1a1hnki3j91mi9o75navvjkpo6ok.apps.googleusercontent.com"
                         render={(renderProps) => (<Button className={classes.googleButton} color='primary' fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">Google Sign In</Button>)}
                         onSuccess={googleSuccess}
                         onFailure={googleFailure}
                         cookiePolicy="single_host_origin"
-                    />
+                    />*/
+                    }
+
                     <Grid container justifyContent="flex-end">
                         <Grid item>
                             <Button onClick={switchMode}>

@@ -1,9 +1,6 @@
 import React from "react";
-import { Card, CardActions, CardContent, CardMedia, Button, Typography, ButtonBase } from '@material-ui/core';
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-import ThumbUpAltOutlined from '@material-ui/icons/ThumbDownAltOutlined';
-import DeleteIcon from '@material-ui/icons/Delete';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import { Card, CardActions, CardContent, CardMedia, Button, Typography, ButtonBase } from '@mui/material';
+import { ThumbUpAlt, ThumbUpOffAlt, Delete, MoreHoriz } from '@material-ui/icons';
 import moment from 'moment';
 import useStyles from './styles';
 import { useDispatch } from "react-redux";
@@ -21,13 +18,13 @@ const Post = ({ post, setCurrentId }) => {
         if (post.likes.length > 0) {
           return post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
             ? (
-              <><ThumbUpAltIcon fontSize="small" />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` }</>
+              <><ThumbUpAlt fontSize="small" />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` }</>
             ) : (
-              <><ThumbUpAltOutlined fontSize="small" />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</>
+              <><ThumbUpAlt fontSize="small" />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</>
             );
         }
     
-        return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
+        return <><ThumbUpOffAlt fontSize="small" />&nbsp;Like</>;
     };
 
     const openPost = () => {
@@ -48,7 +45,7 @@ const Post = ({ post, setCurrentId }) => {
                 { (user?.result?.googleId === post?.creator || user?.results?._id === post?.creator) && (
                 <div className={classes.overlay2}>
                     <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(post._id)}>
-                        <MoreHorizIcon fontSize="medium" />
+                        <MoreHoriz fontSize="medium" />
                     </Button>
                 </div>
                 )}
@@ -66,7 +63,7 @@ const Post = ({ post, setCurrentId }) => {
                 </Button>
                 { (user?.result?.googleId === post?.creator || user?.results?._id === post?.creator) && (
                 <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>
-                    <DeleteIcon fontSize="small"/>
+                    <Delete fontSize="small"/>
                     Delete
                 </Button>
                 )}
