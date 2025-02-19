@@ -1,12 +1,12 @@
 import React from 'react';
-import { TextField, Grid, InputAdornment, IconButton } from '@mui/material';
+import { TextField, Grid2, InputAdornment, IconButton } from '@mui/material';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 const Input = ({ name, handleChange, label, type, half, autoFocus, handleShowPassword }) => {
     return (
         
-    <Grid item xs={6} sm={ half ? 6 : 12}>
+    <Grid2 item xs={6} sm={ half ? 6 : 12}>
         <TextField
             name={name}
             label={label}
@@ -26,7 +26,7 @@ const Input = ({ name, handleChange, label, type, half, autoFocus, handleShowPas
                 ),
               } : null}
             />
-    </Grid>
+    </Grid2>
     )
 }
 

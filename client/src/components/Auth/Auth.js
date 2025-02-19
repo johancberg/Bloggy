@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Avatar, Button, Paper, Grid, Typography, Container,} from '@mui/material';
+import { Avatar, Button, Paper, Grid2, Typography, Container,} from '@mui/material';
 //import { GoogleLogin } from 'react-google-login'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 
-import { AUTH } from '../../constants/actionTypes'
+//import { AUTH } from '../../constants/actionTypes'
 import { signin, signup } from '../../actions/auth';
 import useStyles from './styles';
 import Input from './Input';
-import Icon from './Icon';
+//import Icon from './Icon';
 
 const Auth = () => {
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
@@ -44,6 +44,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
         setShowPassword(false);
     }
 
+    /*
     const googleSuccess = async (response) => {
         const result = response?.profileObj; // Cannot get property profileObj of undefined
         const token = response?.tokenId;
@@ -60,6 +61,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
         console.log(error);
         console.log("Google Sign In was unsuccessfull. Try again later.")
     }
+    */
 
     return (
         <Container component="main" maxWidth="xs">
@@ -69,7 +71,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
                 </Avatar>
                 <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
                 <form className={classes.form} onSubmit={handleSubmit}>
-                    <Grid container spacing={2}>
+                    <Grid2 container spacing={2}>
                         {
                             isSignup && (
                                 <>
@@ -80,7 +82,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
                             <Input name="email" label="E-mail Address" handleChange={handleChange} type="email"></Input>
                             <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword}></Input>
                             { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type='password' />}
-                    </Grid>
+                    </Grid2>
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         { isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
@@ -94,14 +96,14 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
                     />*/
                     }
 
-                    <Grid container justifyContent="flex-end">
-                        <Grid item>
+                    <Grid2 container justifyContent="flex-end">
+                        <Grid2 item>
                             <Button onClick={switchMode}>
                                 { isSignup ? 'Already have an account? Sign In!' : 'Dont have an account? Sign Up!'}
                             </Button>
-                        </Grid>
+                        </Grid2>
 
-                    </Grid>
+                    </Grid2>
                  </form>
             </Paper>
         </Container>
