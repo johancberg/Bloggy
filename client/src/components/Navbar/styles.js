@@ -1,5 +1,5 @@
 import { makeStyles } from '@mui/styles';
-import { deepPurple } from '@material-ui/core/colors';
+import { deepPurple } from '@mui/material/colors';
 
 export default makeStyles((theme) => ({
   appBar: {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardActions, CardContent, CardMedia, Button, Typography, ButtonBase } from '@mui/material';
-import { ThumbUpAlt, ThumbUpOffAlt, Delete, MoreHoriz } from '@material-ui/icons';
+import { ThumbUpAlt, ThumbUpOffAlt, Delete, MoreHoriz } from '@mui/icons-material';
 import moment from 'moment';
 import useStyles from './styles';
 import { useDispatch } from "react-redux";
