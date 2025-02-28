@@ -24,7 +24,7 @@ const Home = () => {
   const page = query.get('page') || 1;
   const searchQuery = query.get('searchQuery');
   const [search, setSearch] = useState(''); 
-  const [tags, setTags] = useState([]); 
+  const [tags/*, setTags*/] = useState([]); 
 
   useEffect(() => {
     dispatch(getPosts());
@@ -52,15 +52,15 @@ const Home = () => {
     <Grow in>
       <Container maxWidth="xl">
         <Grid2 container justifyContent="space-between" alignItems="stretch" spacing={3} className={classes.gridContainer}>
-          <Grid2 item xs={12} sm={6} md={9}>
+          <Grid2 item size={{ xs:12, sm:6, md: 9}}>
             <Posts setCurrentId={setCurrentId} />
           </Grid2>
-          <Grid2 item xs={12} sm={6} md={3}>
+          <Grid2 item size={{ xs:12, sm:6, md: 3}}>
             <AppBar className={classes.appBarSearch} position="static" color="inherit">
               <TextField id="PostSearch" name="search" variant="outlined" label="Seach Posts" fullWidth value={search} onChange={(e) => setSearch(e.target.value)} onKeyDown={handleKeyPress} />
               {//*<ChipInput id="PostTags" style={{ margin: '10px 0'}} value={tags} onAdd={handleAdd} onDelete={handleDelete} label="Search Tags" variant="outlined" /> */
               }
-              <Button onClick={searchPost} className={classes.searchButton} variant="contained" color="primary">Search</Button>
+              <Button style={{ margin: '10px 0 0 0'}} onClick={searchPost} className={classes.searchButton} variant="contained" color="primary">Search</Button>
             </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
             {(!searchQuery && !tags.length && (

@@ -5,7 +5,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 const Input = ({ name, handleChange, label, type, half, autoFocus, handleShowPassword }) => {
     return (
         
-    <Grid2 item xs={6} sm={ half ? 6 : 12}>
+    <Grid2 item size={{ xs:6, sm:half ? 6 : 12 }}>
         <TextField
             name={name}
             label={label}
