@@ -54,7 +54,7 @@ const Post = ({ post, setCurrentId }) => {
                 </div>
                 <CardContent>
                     <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
-                    <Typography variant="body2" color="textSecondary" component="p" gutterBottom>{post.message}</Typography>
+                    <Typography className={classes.message} variant="body2" color="textSecondary" component="p" gutterBottom>{post.message}</Typography>
                 </CardContent>
             </ButtonBase>
             <CardActions className={classes.cardActions}>
