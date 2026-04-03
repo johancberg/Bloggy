@@ -1,12 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import { db_user, db_password, db_name } from './credentials.js';
+import 'dotenv/config';
 
 import postRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
 
 const app = express();
+const { DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
 app.use(express.json({ limit: '30mb', extended: true }))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
@@ -20,8 +21,8 @@ app.get('/', (req, res) => {
 });
 
 // mongodb
-const CONNECTION_URL = 'mongodb+srv://' + db_user() + ':' + db_password() + '@cluster0.kkfnl.mongodb.net/?appName=' + db_name() + '&retryWrites=true&w=majority';
-const PORT = process.env.PORT || 8000;
+const CONNECTION_URL = 'mongodb+srv://' + DB_USER + ':' + DB_PASSWORD + '@cluster0.kkfnl.mongodb.net/?appName=' + DB_NAME + '&retryWrites=true&w=majority';
+const PORT = DB_PORT || 8000;
 
 mongoose.set('strictQuery', false);
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
