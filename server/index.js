@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 // mongodb
 const CONNECTION_URL = 'mongodb+srv://' + db_user() + ':' + db_password() + '@cluster0.kkfnl.mongodb.net/?appName=' + db_name() + '&retryWrites=true&w=majority';
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 mongoose.set('strictQuery', false);
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
