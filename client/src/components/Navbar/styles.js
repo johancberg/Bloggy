@@ -9,20 +9,22 @@ export default makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '10px 50px',
+    padding: '10px min(50px, 10%)',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
+      gap: '0.6em',
     },
   },
   heading: {
     color: theme.palette.primary.main,
     textDecoration: 'none',
-    fontSize: '3.2em',
+    fontSize: 'min(3.2em, 14.5vw)',
     fontWeight: 500,
   },
   image: {
     marginLeft: '10px',
     marginTop: '5px',
+    height: 'min(60px,16.5vw)',
   },
   toolbar: {
     display: 'flex',
