@@ -34,7 +34,7 @@ const PostDetails = () => {
 
 
     return (
-        <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
+        <Paper style={{ padding: '20px', marginBottom: '48px', borderRadius: '15px' }} elevation={6}>
             <div className={classes.card}>
                 <div className={classes.section}>
                     <Typography variant="h3" component="h2">{post.title}</Typography>
@@ -58,7 +58,7 @@ const PostDetails = () => {
                     <Divider />
                     <div className={classes.recommendedPosts}>
                         {recommendedPosts.map(({ title, message, name, likes, selectedFile, _id }) => (
-                            <div style={{ margin: '20px', cursor: 'pointer' }} onClick={() => openPost(_id)} key={_id}>
+                            <div className={classes.recommendedPost} onClick={() => openPost(_id)} key={_id}>
                                 <Typography gutterBottom variant="h6">{title}</Typography>
                                 <Typography gutterBottom variant="subtitle2">{name}</Typography>
                                 <Typography gutterBottom variant="subtitle2">{message}</Typography>
