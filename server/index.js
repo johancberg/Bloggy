@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 // mongodb
-const CONNECTION_URL = 'mongodb+srv://' + DB_USER + ':' + DB_PASSWORD + '@cluster0.kkfnl.mongodb.net/?appName=' + DB_NAME + '&retryWrites=true&w=majority';
+const CONNECTION_URL = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.kkfnl.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
 const PORT = DB_PORT || 8000;
 
 mongoose.set('strictQuery', false);
