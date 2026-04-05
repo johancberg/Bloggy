@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Avatar, Button, Paper, Grid2, Typography, Container,} from '@mui/material';
+import { Avatar, Button, Paper, Grid, Typography, Container,} from '@mui/material';
 //import { GoogleLogin } from 'react-google-login'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
@@ -71,7 +71,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
                 </Avatar>
                 <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
                 <form className={classes.form} onSubmit={handleSubmit}>
-                    <Grid2 container spacing={2}>
+                    <Grid container spacing={2}>
                         {
                             isSignup && (
                                 <>
@@ -82,7 +82,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
                             <Input name="email" label="E-mail Address" handleChange={handleChange} type="email"></Input>
                             <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword}></Input>
                             { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type='password' />}
-                    </Grid2>
+                    </Grid>
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         { isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
@@ -96,14 +96,14 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
                     />*/
                     }
 
-                    <Grid2 container justifyContent="flex-end">
-                        <Grid2 item>
+                    <Grid container justifyContent="flex-end">
+                        <Grid item>
                             <Button onClick={switchMode}>
                                 { isSignup ? 'Already have an account? Sign In!' : 'Dont have an account? Sign Up!'}
                             </Button>
-                        </Grid2>
+                        </Grid>
 
-                    </Grid2>
+                    </Grid>
                  </form>
             </Paper>
         </Container>

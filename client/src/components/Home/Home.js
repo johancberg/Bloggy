@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Grow, Grid2, Paper, AppBar, TextField, Button } from '@mui/material';
+import { Container, Grow, Grid, Paper, AppBar, TextField, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getPosts, getPostsBySearch } from '../../actions/posts';
-//import ChipInput from 'material-ui-chip-input';
+import { MuiChipsInput } from 'mui-chips-input';
 
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
@@ -24,7 +24,7 @@ const Home = () => {
   const page = query.get('page') || 1;
   const searchQuery = query.get('searchQuery');
   const [search, setSearch] = useState(''); 
-  const [tags/*, setTags*/] = useState([]); 
+  const [tags, setTags] = useState([]); 
 
   useEffect(() => {
     dispatch(getPosts());
@@ -45,21 +45,20 @@ const Home = () => {
     }
   }
 
-  //const handleAdd = (tag) => setTags([...tags, tag]);
-  //const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));  
+  const handleAdd = (tag) => setTags([...tags, tag]);
+  const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
 
   return (    
     <Grow in>
       <Container style={{ paddingBottom: "48px" }} maxWidth="xl">
-        <Grid2 container justifyContent="space-between" alignItems="stretch" spacing={3} className={classes.gridContainer}>
-          <Grid2 size={{ xs:12, sm:6, md: 9}}>
+        <Grid container justifyContent="space-between" alignItems="stretch" spacing={3} className={classes.gridContainer}>
+          <Grid size={{ xs:12, sm:6, md: 9}}>
             <Posts setCurrentId={setCurrentId} />
-          </Grid2>
-          <Grid2 size={{ xs:12, sm:6, md: 3}}>
+          </Grid>
+          <Grid size={{ xs:12, sm:6, md: 3}}>
             <AppBar className={classes.appBarSearch} position="static" color="inherit">
               <TextField id="PostSearch" name="search" variant="outlined" label="Seach Posts" fullWidth value={search} onChange={(e) => setSearch(e.target.value)} onKeyDown={handleKeyPress} />
-              {//*<ChipInput id="PostTags" style={{ margin: '10px 0'}} value={tags} onAdd={handleAdd} onDelete={handleDelete} label="Search Tags" variant="outlined" /> */
-              }
+              <MuiChipsInput id="PostTags" style={{ margin: '10px 0'}} value={tags} onAddChip={handleAdd} onDeleteChip={handleDelete} label="Search Tags" variant="outlined" />
               <Button style={{ margin: '10px 0 0 0'}} onClick={searchPost} className={classes.searchButton} variant="contained" color="primary">Search</Button>
             </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
@@ -68,8 +67,8 @@ const Home = () => {
                 <Paginate page={page} />
               </Paper>
             ))}
-          </Grid2>
-        </Grid2>
+          </Grid>
+        </Grid>
       </Container>
     </Grow>
   )
