@@ -43,6 +43,16 @@ const Form = ({ currentId, setCurrentId }) => {
     }
 
     if (!user?.result.name) {
+        if (user && !user?.result?.name) {
+            return (
+                <Paper className={classes.paper}>
+                    <Typography variant="h6" align="center">
+                        An unexpected error occurred. Please sign out and in again.
+                    </Typography>
+                </Paper>
+            )
+        }
+
         return (
             <Paper className={classes.paper}>
                 <Typography variant="h6" align="center">

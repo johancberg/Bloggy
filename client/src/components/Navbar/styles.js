@@ -36,8 +36,10 @@ export default makeStyles((theme) => ({
   },
   profile: {
     display: 'flex',
-    justifyContent: 'space-between',
-    width: '400px',
+    justifyContent: 'flex-end',
+    gap: '2rem',
+    flexShrink: 1,
+    flexBasis: '400px',
     alignItems: 'center',
     [theme.breakpoints.down('sm')]: {
       width: 'auto',

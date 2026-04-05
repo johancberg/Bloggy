@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Avatar, Button, Paper, Grid, Typography, Container,} from '@mui/material';
-//import { GoogleLogin } from 'react-google-login'
+//import { GoogleLogin } from '@react-oauth/google';
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 
@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import { signin, signup } from '../../actions/auth';
 import useStyles from './styles';
 import Input from './Input';
-//import Icon from './Icon';
 
 const Auth = () => {
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
@@ -46,6 +45,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
 
     /*
     const googleSuccess = async (response) => {
+        console.log('response', response);
         const result = response?.profileObj; // Cannot get property profileObj of undefined
         const token = response?.tokenId;
         
@@ -70,7 +70,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
                     
                 </Avatar>
                 <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
-                <form className={classes.form} onSubmit={handleSubmit}>
+                <form className={classes.form} spacing={3} onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         {
                             isSignup && (
@@ -83,26 +83,19 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
                             <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword}></Input>
                             { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type='password' />}
                     </Grid>
-                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+                    <Button type="submit" sx={{ mt: 2, mb: 1 }} fullWidth variant="contained" color="primary" className={classes.submit}>
                         { isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
-
                     {/* <GoogleLogin
-                        clientId="875273323126-6hpj1a1hnki3j91mi9o75navvjkpo6ok.apps.googleusercontent.com"
-                        render={(renderProps) => (<Button className={classes.googleButton} color='primary' fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">Google Sign In</Button>)}
                         onSuccess={googleSuccess}
                         onFailure={googleFailure}
-                        cookiePolicy="single_host_origin"
                     />*/
                     }
 
                     <Grid container justifyContent="flex-end">
-                        <Grid item>
-                            <Button onClick={switchMode}>
-                                { isSignup ? 'Already have an account? Sign In!' : 'Dont have an account? Sign Up!'}
-                            </Button>
-                        </Grid>
-
+                        <Button onClick={switchMode}>
+                            { isSignup ? 'Already have an account? Sign In!' : 'Dont have an account? Sign Up!'}
+                        </Button>
                     </Grid>
                  </form>
             </Paper>

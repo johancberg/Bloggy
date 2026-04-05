@@ -2,6 +2,7 @@ import React from 'react'
 import { Container } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/styles';
+//import { GoogleOAuthProvider } from '@react-oauth/google';
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar';
@@ -23,6 +24,7 @@ const App = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
 
   return (
+    //<GoogleOAuthProvider clientId="875273323126-6hpj1a1hnki3j91mi9o75navvjkpo6ok.apps.googleusercontent.com">
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Container maxwidth="xl">
@@ -37,6 +39,7 @@ const App = () => {
         </Container>
       </BrowserRouter>
     </ThemeProvider>
+    //</GoogleOAuthProvider>
   );
 }
 
