@@ -33,7 +33,7 @@ const Navbar = () => {
   }, [user?.token, logout, location]);
 
   return (
-    <AppBar className={classes.appBar} position="static" color="inherit">
+    <AppBar className={classes.appBar} position="static" color="inherit" sx={{ flexDirection: { xs: 'column', sm: 'row' } }}>
       <Link to="/" className={classes.brandContainer}>
         <Typography className={classes.heading} variant="h2" align="center">Bloggy</Typography>
         <img className={classes.image} src={memories} alt="memories" height="60" />
