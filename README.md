@@ -13,7 +13,7 @@ The following languages has been used for this project.
 - MongoDB
 - Node.js
 - Express
-. CSS (through material-ui)
+- CSS (through material-ui)
 
 ### Support
 
