@@ -11,7 +11,7 @@ export const posts = (state = { isLoading : true, posts: [] }, action) => {
         case FETCH_ALL:
             return { ...state, posts: action.payload.data, currentPage: action.payload.currentPage, numberOfPages: action.payload.numberOfPages };
         case FETCH_BY_SEARCH:
-            return { ...state, posts: action.payload.data };
+            return { ...state, posts: action.payload };
         case CREATE:
             return { ...state, posts: [...state.posts, action.payload] };
         case DELETE:
