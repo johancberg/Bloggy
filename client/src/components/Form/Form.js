@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@mui/material";
-//import FileBase from 'react-file-base64'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -42,6 +41,17 @@ const Form = ({ currentId, setCurrentId }) => {
         setPostData({title: '', message: '', tags: '', selectedFile: ''});
     }
 
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPostData({ ...postData, selectedFile: reader.result }); // data:image/...;base64,...
+        };
+        console.log('file', postData);
+        reader.readAsDataURL(file);
+    }
+    
     if (!user?.result.name) {
         if (user && !user?.result?.name) {
             return (
@@ -70,9 +80,10 @@ const Form = ({ currentId, setCurrentId }) => {
                 <TextField name ="message" variant="outlined" label="Message" fullWidth value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
                 <TextField name ="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(`,`) })} />
                 <div className={classes.fileInput}>
-                    {/*
-                    <FileBase type="file" multiple={false} onDone={({base64}) => setPostData({ ...postData, selectedFile: base64 })} />
-                    */}
+                    <Button variant="contained" color="primary" component="label" fullWidth sx={{ mb: 1 }}>
+                        Upload Image
+                        <input hidden accept="image/*" type="file" onChange={handleFileChange} />
+                    </Button>
                     <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                     <Button sx={{ marginTop: 1 }} variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
                 </div>
