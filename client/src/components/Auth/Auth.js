@@ -92,7 +92,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
                     />*/
                     }
 
-                    <Grid container justifyContent="flex-end">
+                    <Grid container justifyContent="flex-end" sx={{ mt: 2 }}>
                         <Button onClick={switchMode}>
                             { isSignup ? 'Already have an account? Sign In!' : 'Dont have an account? Sign Up!'}
                         </Button>
