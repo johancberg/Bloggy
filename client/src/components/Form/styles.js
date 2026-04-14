@@ -14,9 +14,25 @@ export default makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
   },
-  fileInput: {
+  buttons: {
     width: '97%',
     margin: '10px 0',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5em',
+  },
+  fileInput: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: '0.8em',
+    alignItems: 'center',
+  },
+  squareButton: {
+    fontSize: '0.2rem',
+    minWidth: '40px !important',
+    width: '40px',
+    height: '34px',
+    padding: '4px',
   },
   buttonSubmit: {
     marginBottom: 10,
