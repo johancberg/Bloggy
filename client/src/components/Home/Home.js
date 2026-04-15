@@ -23,16 +23,16 @@ const Home = () => {
   const navigate = useNavigate();
   const page = query.get('page') || 1;
   const searchQuery = query.get('searchQuery');
-  const [search, setSearch] = useState(''); 
-  const [tags, setTags] = useState([]); 
+  const [filter, setFilter] = useState({ search: '', tags: [] });
 
   useEffect(() => {
     dispatch(getPosts());
   }, [currentId, dispatch]);
 
   const searchPost = () => {
-    if (search.trim() || tags ) {
-      dispatch(getPostsBySearch({search, tags: tags.join(',') }));
+    const { search, tags } = filter;
+    if (search.trim() || tags) {
+      dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
       navigate(`/posts/search?searchQuery=${search || 'none' }&tags=${tags.join(',')}`);
     } else {
       navigate('/');
@@ -47,9 +47,9 @@ const Home = () => {
             <Posts setCurrentId={setCurrentId} />
           </Grid>
           <Grid size={{ xs:12, sm:6, md: 3}}>
-            <SearchBar search={search} setSearch={setSearch} tags={tags} setTags={setTags} searchPost={searchPost} />
+            <SearchBar filter={filter} setFilter={setFilter} searchPost={searchPost} />
             <Form currentId={currentId} setCurrentId={setCurrentId} />
-            {(!searchQuery && !tags.length && (
+            {(!searchQuery && !filter.tags.length && (
               <Paper elevation={6} className={classes.pagination} >
                 <Paginate page={page} />
               </Paper>
