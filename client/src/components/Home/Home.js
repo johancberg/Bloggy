@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Grow, Grid, Paper, AppBar, TextField, Button } from '@mui/material';
+import { Container, Grow, Grid, Paper } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getPosts, getPostsBySearch } from '../../actions/posts';
-import { MuiChipsInput } from 'mui-chips-input';
 
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
+import SearchBar from '../Form/SearchForm';
 import Paginate from '../Pagination';
 
 import useStyles from './styles';
@@ -39,15 +39,6 @@ const Home = () => {
     }
   }
 
-  const handleKeyPress = (e) => {
-    if (e.keyCode === 13) {
-      searchPost();
-    }
-  }
-
-  const handleAdd = (tag) => setTags([...tags, tag]);
-  const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
-
   return (    
     <Grow in>
       <Container style={{ paddingBottom: "48px" }} maxWidth="xl">
@@ -56,11 +47,7 @@ const Home = () => {
             <Posts setCurrentId={setCurrentId} />
           </Grid>
           <Grid size={{ xs:12, sm:6, md: 3}}>
-            <AppBar className={classes.appBarSearch} position="static" color="inherit">
-              <TextField id="PostSearch" name="search" variant="outlined" label="Seach Posts" fullWidth value={search} onChange={(e) => setSearch(e.target.value)} onKeyDown={handleKeyPress} />
-              <MuiChipsInput id="PostTags" style={{ margin: '10px 0'}} value={tags} onAddChip={handleAdd} onDeleteChip={handleDelete} label="Search Tags" variant="outlined" />
-              <Button style={{ margin: '10px 0 0 0'}} onClick={searchPost} className={classes.searchButton} variant="contained" color="primary">Search</Button>
-            </AppBar>
+            <SearchBar search={search} setSearch={setSearch} tags={tags} setTags={setTags} searchPost={searchPost} />
             <Form currentId={currentId} setCurrentId={setCurrentId} />
             {(!searchQuery && !tags.length && (
               <Paper elevation={6} className={classes.pagination} >
