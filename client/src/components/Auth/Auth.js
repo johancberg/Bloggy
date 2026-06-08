@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Avatar, Button, Paper, Grid, Typography, Container,} from '@mui/material';
-//import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
+import jwtDecode from 'jwt-decode';
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 
-//import { AUTH } from '../../constants/actionTypes'
+import { AUTH } from '../../constants/actionTypes'
 import { signin, signup } from '../../actions/auth';
 import useStyles from './styles';
 import Input from './Input';
@@ -43,11 +44,9 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
         setShowPassword(false);
     }
 
-    /*
     const googleSuccess = async (response) => {
-        console.log('response', response);
-        const result = response?.profileObj; // Cannot get property profileObj of undefined
-        const token = response?.tokenId;
+        const result = jwtDecode(response.credential);
+        const token = response.credential;
         
         try {
             dispatch({ type: AUTH, data: { result, token }});
@@ -61,7 +60,6 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
         console.log(error);
         console.log("Google Sign In was unsuccessfull. Try again later.")
     }
-    */
 
     return (
         <Container component="main" maxWidth="xs">
@@ -86,12 +84,10 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
                     <Button type="submit" sx={{ mt: 2, mb: 1 }} fullWidth variant="contained" color="primary" className={classes.submit}>
                         { isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
-                    {/* <GoogleLogin
+                    <GoogleLogin
                         onSuccess={googleSuccess}
-                        onFailure={googleFailure}
-                    />*/
-                    }
-
+                        onError={googleFailure}
+                    />
                     <Grid container justifyContent="flex-end" sx={{ mt: 2 }}>
                         <Button onClick={switchMode}>
                             { isSignup ? 'Already have an account? Sign In!' : 'Dont have an account? Sign Up!'}
