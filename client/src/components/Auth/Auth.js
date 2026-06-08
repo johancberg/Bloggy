@@ -64,9 +64,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
     return (
         <Container component="main" maxWidth="xs">
             <Paper className={classes.paper} elevation={3}>
-                <Avatar className={classes.avatar}>
-                    
-                </Avatar>
+                <Avatar className={classes.avatar}/>
                 <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
                 <form className={classes.form} spacing={3} onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
@@ -86,7 +84,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
                     </Button>
                     <GoogleLogin
                         onSuccess={googleSuccess}
-                        onError={googleFailure}
+                        onFailure={googleFailure}
                     />
                     <Grid container justifyContent="flex-end" sx={{ mt: 2 }}>
                         <Button onClick={switchMode}>
